@@ -41,6 +41,24 @@ export async function withdraw(pubkey: String, amount: String) {
     }
 }
 
-approve(wallet, "69");
-deposit(wallet, "69");
-withdraw(wallet, "69");
+export async function getBalanceArb(pubkey: String) {
+    try {
+        const response = await axios.get(`https://yuzu-api-production.r8edev.xyz/balance/arbMainnet/${pubkey}/arb`);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error in getBalanceArb function:', error);
+        throw error;
+    }
+}
+
+export async function getBalanceEdu(pubkey: String) {
+    try {
+        const response = await axios.get(`https://yuzu-api-production.r8edev.xyz/balance/eduMainnet/${pubkey}/edu`);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error in getBalanceEdu function:', error);
+        throw error;
+    }
+}
